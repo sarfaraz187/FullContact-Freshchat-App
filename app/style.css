@@ -1,7 +1,19 @@
-.logo {
+/* .logo {
   background: url('freshchat_logo.png');
   background-repeat: no-repeat;
   background-size: contain;
   height: 25px;
   margin-top: 25px;
+} */
+/* 
+.icon {
+  padding: 6px 0px 0px 7px !important ;
+} */
+/* 
+.input-container-inner input{
+  width: 85% !important;
+} */
+
+.layout {
+  margin-top: 15px;
 }
