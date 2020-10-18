@@ -38,12 +38,11 @@
         let labelObj = { "fullName" : "Full Name", "gender" : "Gender", "location" : "Location", "title" : "Title", "organization" : "Organization", "bio" : "Bio"}
         Object.keys(labelObj).forEach(element => {
           let html = `<div>
-            <label id="">${labelObj[element]}</label>
-            <p id="">${contactDetails[element]}</p>
+            <label>${labelObj[element]}</label>
+            <p>${contactDetails[element]}</p>
           </div>`
           $(".container").append(html);
         });
-        // client.instance.close();
       },function (error) {
         console.log(error)
       });

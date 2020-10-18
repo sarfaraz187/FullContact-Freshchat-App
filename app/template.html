@@ -12,19 +12,19 @@
 
 <body>
   <div class="container">
-    <fw-input id="full_name" label="Full Name" icon-left="add-contact" state-text="" state="" placeholder="Enter Full name" value="Bart Lorang"
+    <fw-input id="full_name" label="Full Name" icon-left="add-contact" state-text="" state="" placeholder="Enter Full name" required
       clear-input>
     </fw-input>
-    <fw-input id="email" label="Email Address" icon-left="email" state-text="" state="" placeholder="Enter Email Address" value="bart@fullcontact.com"
+    <fw-input id="email" label="Email Address" icon-left="email" state-text="" state="" placeholder="Enter Email Address"  required
       clear-input>
     </fw-input>
-    <fw-input id="phone_number" type="number" label="Phone Number" icon-left="phone" state-text="" state="" placeholder="Enter Phone Number" value="17202227799"
+    <fw-input id="phone_number" type="number" maxlength="15" label="Phone Number" icon-left="phone" state-text="" state="" placeholder="Enter Phone Number" required
       clear-input>
     </fw-input>
     <fw-button id="submit" size="normal"> Submit </fw-button>
   </div>
-  <div class="container layout">
-    <fw-label value="Last 5 Profile Viewed" color="blue"></fw-label>
+  <div id="disp_profile" class="container layout">
+    <fw-label value="Last 5 Profiles Viewed" color="blue"></fw-label>
   </div>  
 </body>
 
