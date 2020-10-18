@@ -6,6 +6,7 @@ You can search a person's details using this app that uses fullcontact's API in 
 
 ## Screenshots
 
+<img src="./Screenshots/App face.png" height="300" width="300">
 ***
 
 
