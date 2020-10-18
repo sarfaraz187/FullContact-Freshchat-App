@@ -7,9 +7,9 @@ You can search a person's details using this app that uses fullcontact's API in 
 ## Screenshots
 
 <img src="./screenshots/App face.png" height="300" width="500">
+
+
 ***
-
-
 
 ## Features Demonstrated
 
