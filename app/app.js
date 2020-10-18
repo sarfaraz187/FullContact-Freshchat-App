@@ -12,6 +12,7 @@ $(document).ready(function () {
 let isDbPresent = false;
 let profileId = null;
 
+/* On submit click. Fetch the contact's information from Enrich API */
 function getPerson() {
   let fullName = $("#full_name").val(), email = $("#email").val(), phone_number = $("#phone_number").val();
   fetchContactDetails(fullName, email, phone_number).then(function (payload) {
@@ -24,6 +25,7 @@ function getPerson() {
   });
 }
 
+/* Create a data storage and store a contact's information */
 function saveProfile(fullName, email, phone_number) {
   let createObject = new Object();
   let id = Math.floor(Math.random() * 1000000000);
@@ -37,6 +39,7 @@ function saveProfile(fullName, email, phone_number) {
   });
 }
 
+/* Update data storage with new contact's information */
 function updateProfile(fullName, email, phone_number) {
   let updateObj = new Object();
   let id = Math.floor(Math.random() * 1000000000);
@@ -49,6 +52,7 @@ function updateProfile(fullName, email, phone_number) {
   });
 }
 
+/* Remove last contact's information */
 function removeProfile (id) {
   client.db.update("profiles","remove", [id]).then(function(data) {
     console.log("!!!! Log from db Delete !!!",data);
@@ -57,6 +61,7 @@ function removeProfile (id) {
   });
 }
 
+/* Display latest 5 contact's details */
 function dispProfiles() {
   client.db.get("profiles").then(function (dbData) {
     isDbPresent = true;
@@ -80,6 +85,7 @@ function dispProfiles() {
   });
 }
 
+/* Find the last contact information */
 function getLastId (dbData) {
   let keys = Object.keys(dbData);
   console.log(dbData[keys[0]]);
@@ -91,6 +97,7 @@ function getLastId (dbData) {
   }
 }
 
+/* Make API call to enrich API to fetch contact's information */
 function fetchContactDetails(fullName, email, phone_number) {
   let opt = {
     headers: {
@@ -115,6 +122,7 @@ function fetchContactDetails(fullName, email, phone_number) {
   });
 }
 
+/* Show modal to display contact's information */
 function displayModal(payload) {
   client.interface.trigger("showModal", {
     title: "Contact Information",
