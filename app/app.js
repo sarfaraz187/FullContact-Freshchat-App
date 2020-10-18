@@ -117,7 +117,7 @@ function fetchContactDetails(fullName, email, phone_number) {
 
 function displayModal(payload) {
   client.interface.trigger("showModal", {
-    title: "Sample Modal",
+    title: "Contact Information",
     template: "modal.html",
     data: payload
   }).then(function (data) {
