@@ -9,17 +9,15 @@ $(document).ready(function () {
   });
 });
   
-let isDbPresent = false;
-let profileId = null;
+let obj = { "isDbPresent" : false, "profileId" : null }
 
 /* On submit click. Fetch the contact's information from Enrich API */
 function getPerson() {
   let fullName = $("#full_name").val(), email = $("#email").val(), phone_number = $("#phone_number").val();
   fetchContactDetails(fullName, email, phone_number).then(function (payload) {
-    isDbPresent ? updateProfile(fullName, email, phone_number) : saveProfile(fullName, email, phone_number);
+    obj.isDbPresent ? updateProfile(fullName, email, phone_number) : saveProfile(fullName, email, phone_number);
     displayModal(payload);
-    console.log({profileId});
-    profileId ? removeProfile(profileId) : "";
+    obj.profileId ? removeProfile(obj.profileId) : "";
   }).catch(function (error) {
     console.log(error);
   });
@@ -30,10 +28,8 @@ function saveProfile(fullName, email, phone_number) {
   let createObject = new Object();
   let id = Math.floor(Math.random() * 1000000000);
   createObject[`profile_${id}`] = { fullName, email, phone_number }
-  console.log({createObject});
-  client.db.set("profiles", createObject).then(function (data) {
-    console.log(data);
-    isDbPresent = true
+  client.db.set("profiles", createObject).then(function () {
+    obj.isDbPresent = true
   }, function (error) {
     console.log(error);
   });
@@ -44,7 +40,6 @@ function updateProfile(fullName, email, phone_number) {
   let updateObj = new Object();
   let id = Math.floor(Math.random() * 1000000000);
   updateObj[`profile_${id}`] = { fullName, email, phone_number }
-  console.log({updateObj});
   client.db.update("profiles", "set", updateObj).then(function (data) {
     console.log(data);
   }, function (error) {
@@ -55,7 +50,7 @@ function updateProfile(fullName, email, phone_number) {
 /* Remove last contact's information */
 function removeProfile (id) {
   client.db.update("profiles","remove", [id]).then(function(data) {
-    console.log("!!!! Log from db Delete !!!",data);
+    console.log(data);
   }, function(error) {
     console.log(error);
   });
@@ -64,9 +59,8 @@ function removeProfile (id) {
 /* Display latest 5 contact's details */
 function dispProfiles() {
   client.db.get("profiles").then(function (dbData) {
-    isDbPresent = true;
-    profileId = getLastId(dbData);
-    console.log(profileId);
+    obj.isDbPresent = true;
+    obj.profileId = getLastId(dbData);
     let keysArr = Object.keys(dbData).reverse()
     keysArr.forEach(element => {
       let html = `<div class="lookup">
@@ -88,7 +82,6 @@ function dispProfiles() {
 /* Find the last contact information */
 function getLastId (dbData) {
   let keys = Object.keys(dbData);
-  console.log(dbData[keys[0]]);
   if(keys.length >= 5) {
     return keys[0];
   } else {
