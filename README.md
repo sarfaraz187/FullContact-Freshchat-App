@@ -1,7 +1,7 @@
 # FullContact Sample App for Freshchat
 
 ## Description 
-You can search a person's details using this app that uses fullcontact's API in the background to display details. The App stores the last 5 viewed person's profile.
+Search a person's details using this app which uses fullcontact's API in the background to display details. The App stores the last 5 viewed person's profile.
 ***
 
 ## Screenshots
